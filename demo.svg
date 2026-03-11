@@ -1,0 +1,234 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="260" viewBox="0 0 620 260">
+  <style>
+    @keyframes shimmer-green {
+      0% { x: -30; }
+      100% { x: 240; }
+    }
+    @keyframes shimmer-yellow {
+      0% { x: -30; }
+      100% { x: 240; }
+    }
+    @keyframes shimmer-orange {
+      0% { x: -30; }
+      100% { x: 240; }
+    }
+    @keyframes shimmer-red {
+      0% { x: -30; }
+      100% { x: 240; }
+    }
+    @keyframes pulse-crit {
+      0% { fill: rgb(255, 55, 55); }
+      50% { fill: rgb(255, 150, 150); }
+      100% { fill: rgb(255, 55, 55); }
+    }
+    @keyframes spin {
+      0% { opacity: 1; }
+      8.3% { opacity: 1; }
+      8.4% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    @keyframes spin-reverse {
+      0% { opacity: 0; }
+      8.3% { opacity: 0; }
+      8.4% { opacity: 1; }
+      16.6% { opacity: 1; }
+      16.7% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+    text { font-family: "SF Mono", "Fira Code", "Cascadia Code", Menlo, monospace; }
+    .bg { fill: #1a1a2e; }
+    .label { fill: #6b7280; font-size: 11px; }
+    .spinner { font-size: 15px; }
+
+    /* Spinner frames for each row */
+    .s0 { animation: spin 1.44s linear infinite; animation-delay: 0s; }
+    .s1 { animation: spin 1.44s linear infinite; animation-delay: -0.12s; }
+    .s2 { animation: spin 1.44s linear infinite; animation-delay: -0.24s; }
+    .s3 { animation: spin 1.44s linear infinite; animation-delay: -0.36s; }
+    .s4 { animation: spin 1.44s linear infinite; animation-delay: -0.48s; }
+    .s5 { animation: spin 1.44s linear infinite; animation-delay: -0.60s; }
+
+    .row-green { fill: rgb(46, 204, 64); font-size: 15px; font-weight: bold; }
+    .row-yellow { fill: rgb(255, 214, 0); font-size: 15px; font-weight: bold; }
+    .row-orange { fill: rgb(255, 140, 0); font-size: 15px; font-weight: bold; }
+    .row-red { fill: rgb(255, 55, 55); font-size: 15px; font-weight: bold; }
+    .row-crit { font-size: 15px; font-weight: bold; animation: pulse-crit 1s ease-in-out infinite; }
+  </style>
+
+  <!-- Background -->
+  <rect class="bg" width="620" height="260" rx="10"/>
+
+  <!-- Title -->
+  <text x="20" y="30" fill="#e2e8f0" font-size="13" font-weight="bold" font-family="SF Mono, Fira Code, Menlo, monospace">claude-code-context-meter</text>
+
+  <!-- Row 1: Green (safe) -->
+  <text class="label" x="20" y="62">safe</text>
+  <g>
+    <!-- Spinner characters overlaid -->
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>·</tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>✢</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>✳</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>✶</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>✻</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-green spinner" x="80" y="62">
+      <tspan>✽</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <!-- Main text with shimmer -->
+    <text class="row-green" x="98" y="62">CTX 35% | 72K tokens</text>
+    <rect x="98" y="48" width="30" height="18" rx="2" fill="rgb(140, 240, 160)" opacity="0.3">
+      <animate attributeName="x" values="68;298" dur="5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Row 2: Yellow (watch) -->
+  <text class="label" x="20" y="102">watch</text>
+  <g>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>·</tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>✢</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>✳</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>✶</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>✻</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow spinner" x="80" y="102">
+      <tspan>✽</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-yellow" x="98" y="102">CTX 55% | 112K tokens</text>
+    <rect x="98" y="88" width="30" height="18" rx="2" fill="rgb(255, 245, 130)" opacity="0.3">
+      <animate attributeName="x" values="68;298" dur="4s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Row 3: Orange (warning) -->
+  <text class="label" x="20" y="142">warn</text>
+  <g>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>·</tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>✢</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>✳</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>✶</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>✻</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange spinner" x="80" y="142">
+      <tspan>✽</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-orange" x="98" y="142">CTX 68% | 160K tokens</text>
+    <rect x="98" y="128" width="30" height="18" rx="2" fill="rgb(255, 200, 100)" opacity="0.3">
+      <animate attributeName="x" values="68;298" dur="3s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Row 4: Red (danger) -->
+  <text class="label" x="20" y="182">danger</text>
+  <g>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>·</tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>✢</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>✳</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>✶</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>✻</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red spinner" x="80" y="182">
+      <tspan>✽</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="row-red" x="98" y="182">CTX 82% | 210K tokens</text>
+    <rect x="98" y="168" width="30" height="18" rx="2" fill="rgb(255, 130, 130)" opacity="0.3">
+      <animate attributeName="x" values="68;298" dur="2.4s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Row 5: Critical (pulse) -->
+  <text class="label" x="20" y="222">crit</text>
+  <g>
+    <!-- Background pulse bar -->
+    <rect x="76" y="208" width="230" height="20" rx="3" opacity="0.9">
+      <animate attributeName="fill" values="rgb(255,55,55);rgb(255,150,150);rgb(255,55,55)" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>·</tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>✢</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>✳</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>✶</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>✻</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0;0" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text class="spinner" x="80" y="222" fill="#1a1a2e">
+      <tspan>✽</tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;0;0;1;1" dur="1.44s" repeatCount="indefinite"/>
+    </text>
+    <text x="98" y="222" fill="#1a1a2e" font-size="15" font-weight="bold" font-family="SF Mono, Fira Code, Menlo, monospace">CTX 94% | 260K tokens</text>
+  </g>
+
+  <!-- Decorative border -->
+  <rect x="0" y="0" width="620" height="260" rx="10" fill="none" stroke="#2d2d4a" stroke-width="1"/>
+</svg>

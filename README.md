@@ -2,13 +2,9 @@
 
 An animated context window meter for [Claude Code](https://docs.anthropic.com/en/docs/claude-code)'s statusline, inspired by Claude Code's own thinking indicator.
 
-```
-✶ CTX 42% | 87K tokens      (green, relaxed shimmer)
-✻ CTX 55% | 112K tokens     (yellow, medium shimmer)
-✢ CTX 68% | 160K tokens     (orange, faster shimmer)
-· CTX 82% | 210K tokens     (red, urgent shimmer)
-✽ CTX 94% | 260K tokens     (red, full-text pulse + reverse video)
-```
+<p align="center">
+  <img src="demo.svg" alt="Context meter demo showing all five zones with animated spinners, shimmer sweeps, and critical pulse" width="620"/>
+</p>
 
 ## Features
 
