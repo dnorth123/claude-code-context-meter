@@ -10,7 +10,7 @@ An animated context window meter for [Claude Code](https://docs.anthropic.com/en
 
 **Animated spinner** — Uses Claude Code's asterisk character set (`· ✢ ✳ ✶ ✻ ✽`) in a ping-pong cycle, matching the thinking indicator's timing (~120ms per frame).
 
-**Shimmer sweep** — A 3-character bright highlight continuously sweeps across the status text. Sweep speed increases with context usage:
+**Shimmer sweep** — A 5-character gradient highlight continuously sweeps across the status text. Sweep speed increases with context usage:
 
 | Zone | Context | Sweep speed | Color |
 |------|---------|-------------|-------|
@@ -73,11 +73,11 @@ Edit the `ZONES` list in the script. Each entry is `(min_percentage, base_rgb, s
 
 ```python
 ZONES = [
-    (90, (255,  55,  55), (255, 150, 150),  80),   # critical
-    (75, (255,  55,  55), (255, 130, 130), 120),   # danger
-    (60, (255, 140,   0), (255, 200, 100), 150),   # warning
-    (50, (255, 214,   0), (255, 245, 130), 200),   # watch
-    ( 0, ( 46, 204,  64), (140, 240, 160), 250),   # safe
+    (90, (255,  55,  55), (255, 200, 200),  80),   # critical
+    (75, (255,  55,  55), (255, 180, 180), 120),   # danger
+    (60, (255, 140,   0), (255, 220, 130), 150),   # warning
+    (50, (255, 214,   0), (255, 255, 160), 200),   # watch
+    ( 0, ( 46, 204,  64), (170, 255, 180), 250),   # safe
 ]
 ```
 
