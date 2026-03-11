@@ -9,7 +9,7 @@ Animations are time-based — each render picks the current frame from the
 wall clock, so the spinner rotates and shimmer advances as the UI refreshes.
 
 Spinner: Claude Code's ping-pong asterisk cycle (· ✢ ✳ ✶ ✻ ✽ and back)
-Shimmer: 3-character bright highlight sweeping across the text
+Shimmer: 5-character gradient highlight sweeping across the text
 Critical (90%+): Full-text sinusoidal pulse with reverse video
 """
 import sys, json, time, math, os, tempfile
@@ -43,11 +43,11 @@ star = SPIN[int(now / 120) % len(SPIN)]
 # Zone: (min_pct, base_rgb, shimmer_rgb, sweep_interval_ms)
 # Sweep speed increases with urgency — green is relaxed, red is urgent
 ZONES = [
-    (90, (255,  55,  55), (255, 150, 150),  80),
-    (75, (255,  55,  55), (255, 130, 130), 120),
-    (60, (255, 140,   0), (255, 200, 100), 150),
-    (50, (255, 214,   0), (255, 245, 130), 200),
-    ( 0, ( 46, 204,  64), (140, 240, 160), 250),
+    (90, (255,  55,  55), (255, 200, 200),  80),
+    (75, (255,  55,  55), (255, 180, 180), 120),
+    (60, (255, 140,   0), (255, 220, 130), 150),
+    (50, (255, 214,   0), (255, 255, 160), 200),
+    ( 0, ( 46, 204,  64), (170, 255, 180), 250),
 ]
 for threshold, base, shim, speed in ZONES:
     if pct >= threshold:
@@ -64,10 +64,16 @@ if pct >= 90:
     print(f"\033[1;7;38;2;{c[0]};{c[1]};{c[2]}m{star} {text}{R}")
     sys.exit(0)
 
-# Normal zones: spinner + 3-char shimmer sweep (continuous loop)
+# Normal zones: spinner + 5-char gradient shimmer sweep (continuous loop)
 sweep = len(text)
 pos = int(now / speed) % sweep
 out = fg(*base) + star + R + " "
 for i, ch in enumerate(text):
-    out += (fg(*shim) if abs(i - pos) <= 1 else fg(*base)) + ch
+    d = abs(i - pos)
+    if d <= 2:
+        t = 1 - d / 2.5
+        c = tuple(min(255, max(0, int(base[j] + (shim[j] - base[j]) * t))) for j in range(3))
+        out += fg(*c) + ch
+    else:
+        out += fg(*base) + ch
 print(out + R)
