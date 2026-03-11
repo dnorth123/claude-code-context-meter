@@ -93,6 +93,48 @@ The `SPIN` array contains the ping-pong sequence. Claude Code uses different set
 
 The default is the macOS set. Edit `SPIN` to match your platform or preference.
 
+## Optional: Context Threshold Hooks
+
+Automated circuit breakers that warn you as the context window fills up, prompting you to save state and start a fresh session before quality degrades.
+
+### Install with hooks
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dnorth123/claude-code-context-meter/main/install.sh | bash -s -- --with-hooks
+```
+
+This installs the meter plus:
+- **Stop hook** — fires after each Claude turn, checks context percentage
+- **SessionStart hook** — loads the most recent saved session state on startup
+- **`/save-state` command** — saves a structured session summary (skipped if you already have one)
+
+### Thresholds
+
+| Level | Trigger | Behavior |
+|-------|---------|----------|
+| Checkpoint | 60% | Brief status report — what's done, what remains, whether to save now |
+| Interrupt | 75% | Recommends running `/save-state` and `/clear` |
+| Urgent | 90% | Tells you to `/save-state` and `/clear` immediately |
+
+Each threshold fires once per session. After warning, it won't repeat at the same level.
+
+### The save-state flow
+
+1. Context hits a threshold → hook warns you
+2. Run `/save-state` → creates a structured summary in `~/.claude/session-states/`
+3. Run `/clear` → starts a fresh session
+4. The session-start hook automatically loads your saved state
+
+State files are kept (up to 10, oldest pruned automatically) so you can reference prior sessions.
+
+### Remove hooks
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dnorth123/claude-code-context-meter/main/install.sh | bash -s -- --remove-hooks
+```
+
+This removes the hooks and bridge files but leaves the context meter intact.
+
 ## How it works
 
 Claude Code calls the statusline command on each render cycle, passing JSON on stdin with context window data. The script:

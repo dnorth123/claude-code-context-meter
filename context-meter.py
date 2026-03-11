@@ -12,7 +12,7 @@ Spinner: Claude Code's ping-pong asterisk cycle (· ✢ ✳ ✶ ✻ ✽ and back
 Shimmer: 3-character bright highlight sweeping across the text
 Critical (90%+): Full-text sinusoidal pulse with reverse video
 """
-import sys, json, time, math
+import sys, json, time, math, os, tempfile
 
 try:
     ctx = json.loads(sys.stdin.read()).get("context_window", {})
@@ -20,6 +20,15 @@ try:
     total = int(ctx.get("total_input_tokens", 0)) + int(ctx.get("total_output_tokens", 0))
 except Exception:
     sys.exit(0)
+
+try:
+    sd = os.path.join(os.path.expanduser("~"), ".claude")
+    fd, tmp = tempfile.mkstemp(dir=sd, suffix=".tmp")
+    os.write(fd, json.dumps({"pct": pct}).encode())
+    os.close(fd)
+    os.rename(tmp, os.path.join(sd, "context-threshold.json"))
+except Exception:
+    pass
 
 if pct == 0:
     sys.exit(0)
