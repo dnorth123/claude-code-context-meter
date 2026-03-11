@@ -31,11 +31,23 @@ All animations are time-based — each render picks the current frame from the w
 
 ## Install
 
-1. Copy the script somewhere permanent:
+One command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dnorth123/claude-code-context-meter/main/install.sh | bash
+```
+
+This downloads the script to `~/.claude/scripts/`, patches your `settings.json`, and backs up any existing statusLine config. Restart Claude Code to see the meter.
+
+### Manual install
+
+If you prefer to do it yourself:
+
+1. Copy the script:
 
 ```bash
 mkdir -p ~/.claude/scripts
-cp context-meter.py ~/.claude/scripts/context-meter.py
+curl -fsSL https://raw.githubusercontent.com/dnorth123/claude-code-context-meter/main/context-meter.py -o ~/.claude/scripts/context-meter.py
 chmod +x ~/.claude/scripts/context-meter.py
 ```
 
